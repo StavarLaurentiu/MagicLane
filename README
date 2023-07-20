@@ -1,0 +1,73 @@
+///////////////////////////////////////////////////////////////////////////////
+
+    Tema 1 - Structuri de Date si Algoritmi - Stavar Laurentiu - 312CC
+
+• Punctaj checker local: - Teste: 100p;
+                         - Valgrind: 20p;
+
+• Durata implementare: ~8h;
+
+• Structuri de date folosite:
+    
+    A) Lane 
+        -> Cuprinde banda magica(list) si degetul(finger);
+        Metode:
+            - move_finger() -> muta degetul la stanga/dreapta;
+            - move_chr_finger() -> cauta un caracter in lista si muta degetul 
+                                   la acesta;
+            - free_lane() -> elibereaza memoria atat pentru lista cat si pentru
+                             deget;
+
+    B) List - banda magica
+        -> Implementata drept o lista dublu inlantuita, cu santinela;
+        Metode:
+            - init_list() -> initializare;
+            - print_list() -> afisare lista;
+            - add_nth_node() -> adauga un nod in lista la o pozitie dorita;
+    
+    C) Stiva - UNDO & REDO
+        -> Implementata drept o lista simplu inlantuita, cu santinela;
+        -> Retine pointeri de tipul finger(pozitiile anterioare ale degetului);
+        Metode:
+            - init_stack() -> initializare;
+            - push() -> adauga un element in varful stivei;
+            - pop() -> scoate un element din varful stivei;
+            - free_stack() -> elibereaza memoria pentru o stiva;
+        
+    D) Coada - efectuarea operatiilor
+        -> Implementata printr-o structura ce retine dimensiunea cozii, headul
+        si tailul;
+        -> Headul pointeaza spre o lista simplu inlantuita ce retine drept date
+        utile stringuri de maxim 20 de caractere - suficiente avand in vedere
+        dimensiunea maxima a comenzilor;
+        Metode:
+            -> init_stack() -> initializare;
+            -> enqueue() -> adauga un nou element in coada;
+            -> dequeue() -> scoate un element din coala;
+            -> free_queue() -> elibereaza memoria pentru o coada;
+
+• Functia start():
+    -> Reprezinta implementarea rezolvarii cerintelor, folosindu-se de
+    structurile si metodele anterior prezentate;
+    -> Deschide fisierele utilizate in citirea si scrierea datelor, iar in 
+    final le inchide;
+    -> Pentru numarul dat de iteratii sunt citite operatiile;
+    -> Operatiile de tip UPDATE sunt adaugate in coada si sunt executate la
+    intalnirea comenzii EXECUTE;
+    -> Operatiile de tip QUERY, UNDO & REDO sunt executate pe masura ce sunt
+    intalnite;
+    -> Operatiile ce sunt suportate de program sunt:
+        - MOVE_LEFT;
+        - MOVE_RIGHT;
+        - MOVE_LEFT_CHAR <C>;
+        - MOVE_RIGHT_CHAR <C>;
+        - WRITE <C>;
+        - INSERT_LEFT <C>;
+        - INSERT_RIGHT <C>;
+        - SHOW_CURRENT;
+        - SHOW;
+        - UNDO;
+        - REDO;
+        - EXECUTE;
+
+///////////////////////////////////////////////////////////////////////////////
